@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>予約フォーム</title>
+    <title>和装レンタル</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* 右端の細いナビ（固定） */
@@ -189,6 +189,7 @@
         .highschool-buttons,
         .symptoms,
         .menu-sections,
+        .Freshflowerphotography-buttons,
         .irradiations {
             display: flex;
             flex-wrap: wrap;
@@ -200,6 +201,7 @@
         .highschool-buttons button,
         .symptoms button,
         .menu-sections button,
+        .Freshflowerphotography-buttons button,
         .irradiations button {
             flex: 1;
             padding: 10px;
@@ -215,6 +217,7 @@
         .visit-buttons button.active,
         .highschool-buttons button.active,
         .symptoms button.active,
+        .Freshflowerphotography-buttons button.active,
         .menu-sections button.active,
         .irradiations button.active {
             background-color: #444;
@@ -804,6 +807,42 @@
         .edit-button:hover {
             background-color: #ff4f4f;
         }
+
+  .label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .checkbox-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background-color: #f9f9f9;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 15px;
+  }
+
+  .checkbox-card:hover {
+    background-color: #eef9f5;
+    border-color: #66cdaa;
+  }
+
+  .checkbox-card input[type="checkbox"] {
+    accent-color: #66cdaa;
+    width: 18px;
+    height: 18px;
+  }
     </style>
 </head>
 
@@ -817,7 +856,7 @@
     </div>
 
     <div class="container">
-        <h1>予約フォームのみ<br>衣装レンタル
+        <h1>予約フォームのみ<br>和装レンタル
         </h1>
         <div class="label">お客様名<span class="required">必須</span></div>
         <input type="text" id="name" placeholder="お名前を入力してください" oninput="saveInput('name')">
@@ -829,7 +868,7 @@
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
         <div class="highlight-background">
-            <div class="kibounitizi">希望日時<span class="required">必須</span></div>
+            <div class="kibounitizi">撮影希望日<span class="required">必須</span></div>
         </div>
 
         <!-- カスタム placeholder 表示用 -->
@@ -858,11 +897,43 @@
             <input type="datetime-local" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="labelContent">メッセージ<br>（質問等お気軽にご記入ください）</div>
+<div class="labelContent">ご希望のお衣装<span class="required">必須</span></div>
+<div class="checkbox-group">
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="七五三3歳">
+    <span>七五三3歳</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="七五三5歳">
+    <span>七五三5歳</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="七五三7歳">
+    <span>七五三7歳</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="ママお着物">
+    <span>ママお着物</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="パパお着物">
+    <span>パパお着物</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="お宮参り産着">
+    <span>お宮参り産着</span>
+  </label>
+  <label class="checkbox-card">
+    <input type="checkbox" name="freshflowerphotography" value="その他">
+    <span>その他</span>
+  </label>
+</div>
+
+        <div class="labelContent">ご質問/ご相談<br>（質問等お気軽にご記入ください）</div>
         <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
 
-        <div class="info-text">※予約送信後、キモノカタログが送信されるので<br>お選びいただいてからチャットにてどちらの<br>着物がいいか送信してください。</div>
-        <button class="submit-button" onclick="submitForm()" div id="section-message">予約を行う</button>
+        <div class="info-text">※送信ボタンを押すと、料金やカタログ等の詳しいご案内が自動返信されます。</div>
+        <button class="submit-button" onclick="submitForm()" div id="section-message">送信</button>
     </div>
 
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
@@ -870,6 +941,7 @@
         let selectedSymptom = [];  // 配列として定義
         let selectedFullDate = '';
         let currentDate = new Date();
+        let FreshflowerphotographyCount = [];
         let availabilityCache = {};
         let irradiationsCount = ''; <!-- 選択された症状を格納する変数 -->
         let totalAmount = 0; // 合計金額を格納する変数
@@ -957,6 +1029,24 @@
             updateDisplayInfo(); // 表示を更新
         }
 
+function fetchSelectedFreshflowerphotography() {
+  const checkboxes = document.querySelectorAll('input[name="freshflowerphotography"]:checked');
+  const selected = [];
+  let totalTime = 0;
+
+  checkboxes.forEach(cb => {
+    selected.push(cb.value);
+    totalTime += FreshflowerphotographyTimes[cb.value] || 0;
+  });
+
+  FreshflowerphotographyCount = selected; // ← これを追加！！
+
+  console.log("選択された項目:", selected);
+  console.log("合計時間:", totalTime);
+
+  fetchAvailability(currentDate); // カレンダー更新処理
+}
+
         function selectDate(cell) {
             // "unavailable" クラスが付いている場合はクリックを無効化
             if (cell.classList.contains('unavailable')) {
@@ -982,18 +1072,23 @@
             updateDisplayInfo();
         }
 
-        function submitForm() {
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-        Yourresidentialaddress: document.getElementById('Yourresidentialaddress').value.trim(),
-                dates: [
-                    document.getElementById('date1').value,
-                    document.getElementById('date2').value,
-                    document.getElementById('date3').value
-                ],
-                message: document.getElementById('message').value.trim()
-            };
+function submitForm() {
+  // ✅ ここで最新のチェックボックス状態を取得
+  const selectedClothes = Array.from(document.querySelectorAll('input[name="freshflowerphotography"]:checked'))
+                               .map(cb => cb.value);
+
+  const formData = {
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    Yourresidentialaddress: document.getElementById('Yourresidentialaddress').value.trim(),
+    FreshflowerphotographyCount: selectedClothes, // ✅ ここに代入
+    dates: [
+      document.getElementById('date1').value,
+      document.getElementById('date2').value,
+      document.getElementById('date3').value
+    ],
+    message: document.getElementById('message').value.trim()
+  };
 
             // フォームデータのチェック
             if (!formData.name) {
@@ -1017,16 +1112,17 @@
             }
 
             // LINEトークにメッセージを送信
-            liff.sendMessages([{
-                type: 'text',
-                text: `【予約フォーム】\n≪衣装レンタル≫\n｟お名前｠\n・${formData.name}\n\n｟ご住所｠\n・${formData.Yourresidentialaddress}\n\n｟電話番号｠\n・${formData.phone}\n\n｟メニュー｠\n・衣装レンタル\n\n【希望日時】\n｟第一希望日｠\n${formatDate(formData.dates[0])}\n\n｟第二希望日｠\n${formatDate(formData.dates[1])}\n\n｟第三希望日｠\n${formatDate(formData.dates[2])}\n\n｟メッセージ｠\n・${formData.message}`
-            }]).then(() => {
-                alert('当日キャンセルは無いようにお願いいたします。');
-                liff.closeWindow();
-            }).catch((err) => {
-                console.error('メッセージの送信に失敗しました', err);
-            });
-        }
+
+  liff.sendMessages([{
+    type: 'text',
+    text: `【予約フォーム】\n≪衣装レンタル≫\n｟お名前｠\n・${formData.name}\n\n｟ご住所｠\n・${formData.Yourresidentialaddress}\n\n｟電話番号｠\n・${formData.phone}\n\n｟メニュー｠\n・衣装レンタル\n\n｟ご希望のお衣装｠\n・${formData.FreshflowerphotographyCount.length > 0 ? '・' + formData.FreshflowerphotographyCount.join('\n・') : '・未選択'}\n\n【希望日時】\n｟第一希望日｠\n${formatDate(formData.dates[0])}\n\n｟第二希望日｠\n${formatDate(formData.dates[1])}\n\n｟第三希望日｠\n${formatDate(formData.dates[2])}\n\n｟メッセージ｠\n・${formData.message}`
+  }]).then(() => {
+    alert('当日キャンセルは無いようにお願いいたします。');
+    liff.closeWindow();
+  }).catch((err) => {
+    console.error('メッセージの送信に失敗しました', err);
+  });
+}
 
         function formatDate(datetime) {
             /* 日時文字列が空の場合は空文字を返す */
