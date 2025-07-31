@@ -135,6 +135,25 @@
             overflow: hidden;
         }
 
+        .labelnamae {
+            display: block;
+            margin-top: 10px;
+            /* ← 追加（上に6pxの隙間） */
+            margin-bottom: 10px;
+            padding: 3px;
+            font-weight: 600;
+            background-color: #00b08d;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: center;
+            /* 中央揃え */
+            text-indent: 40px;
+            /* テキストを右に20pxずらす */
+            position: relative;
+            overflow: hidden;
+        }
+
         .labelContent {
             display: block;
             margin-top: 10px;
@@ -186,8 +205,13 @@
         }
 
         .visit-buttons,
+        .coordination-buttons,
         .highschool-buttons,
         .symptoms,
+        .footsize-buttons,
+        .clothessize-buttons,
+        .AnshinPack-buttons,
+        .OtonaAnshinPack-buttons,
         .menu-sections,
         .Freshflowerphotography-buttons,
         .irradiations {
@@ -198,8 +222,13 @@
         }
 
         .visit-buttons button,
+        .coordination-buttons button,
         .highschool-buttons button,
+        .AnshinPack-buttons button,
+        .OtonaAnshinPack-buttons button,
+        .clothessize-buttons button,
         .symptoms button,
+        .footsize-buttons button,
         .menu-sections button,
         .Freshflowerphotography-buttons button,
         .irradiations button {
@@ -215,8 +244,13 @@
         }
 
         .visit-buttons button.active,
+        .coordination-buttons button.active,
+        .footsize-buttons button.active,
         .highschool-buttons button.active,
+        .clothessize-buttons button.active,
         .symptoms button.active,
+        .AnshinPack-buttons button.active,
+        .OtonaAnshinPack-buttons button.active,
         .Freshflowerphotography-buttons button.active,
         .menu-sections button.active,
         .irradiations button.active {
@@ -808,61 +842,60 @@
             background-color: #ff4f4f;
         }
 
-  .label {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
+        .label {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
 
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-  .checkbox-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    background-color: #f9f9f9;
-    border: 1.5px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    font-size: 15px;
-  }
+        .checkbox-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background-color: #f9f9f9;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: 15px;
+        }
 
-  .checkbox-card:hover {
-    background-color: #eef9f5;
-    border-color: #66cdaa;
-  }
+        .checkbox-card:hover {
+            background-color: #eef9f5;
+            border-color: #66cdaa;
+        }
 
-  .checkbox-card input[type="checkbox"] {
-    accent-color: #66cdaa;
-    width: 18px;
-    height: 18px;
-  }
+        .checkbox-card input[type="checkbox"] {
+            accent-color: #66cdaa;
+            width: 18px;
+            height: 18px;
+        }
     </style>
 </head>
 
 <body>
-    <!-- 右側の追従ナビ -->
-    <div class="side-nav" id="sideNav">
-        <a href="#section-message">
-            <span>⇩</span>
-            <i class="fas fa-comment"></i>
-        </a>
-    </div>
 
     <div class="container">
-        <h1>予約フォームのみ<br>和装レンタル
+        <h1>
+            <span style="font-size: 18px;">すずき写真事務所</span><br>
+            衣装レンタル<br>(撮影なし)
+            <div class="info-text">
+                こちらのフォームは携帯専用です。<br>パソコンからは送信できません
+            </div>
         </h1>
         <div class="label">お客様名<span class="required">必須</span></div>
         <input type="text" id="name" placeholder="お名前を入力してください" oninput="saveInput('name')">
 
         <div class="label">ご住所<span class="required">必須</span></div>
-        <input type="text" id="Yourresidentialaddress" placeholder="ご住所を入力してください" oninput="saveInput('Yourresidentialaddress')">
+        <input type="text" id="Yourresidentialaddress" placeholder="ご住所を入力してください"
+            oninput="saveInput('Yourresidentialaddress')">
 
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
@@ -897,42 +930,121 @@
             <input type="datetime-local" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-<div class="labelContent">ご希望のお衣装<span class="required">必須</span></div>
-<div class="checkbox-group">
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="七五三3歳">
-    <span>七五三3歳</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="七五三5歳">
-    <span>七五三5歳</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="七五三7歳">
-    <span>七五三7歳</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="ママお着物">
-    <span>ママお着物</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="パパお着物">
-    <span>パパお着物</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="お宮参り産着">
-    <span>お宮参り産着</span>
-  </label>
-  <label class="checkbox-card">
-    <input type="checkbox" name="freshflowerphotography" value="その他">
-    <span>その他</span>
-  </label>
-</div>
+        <div class="labelContent">ご希望のお衣装<span class="required">必須</span></div>
+        <div class="checkbox-group">
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="七五三3歳">
+                <span>七五三3歳</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="七五三5歳">
+                <span>七五三5歳</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="七五三7歳">
+                <span>七五三7歳</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="ママお着物">
+                <span>ママお着物</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="パパお着物">
+                <span>パパお着物</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="お宮参り産着">
+                <span>お宮参り産着</span>
+            </label>
+            <label class="checkbox-card">
+                <input type="checkbox" name="freshflowerphotography" value="その他">
+                <span>その他</span>
+            </label>
+        </div>
+
+        <div class="labelContent">カタログ</div>
+
+        <div class="info-text">
+            <a href="https://kimono-c.jp/" target="_blank" rel="noopener noreferrer">
+                ＞＞カタログ＜＜
+
+            </a>
+
+            <br>【ログインＩＤ】1234
+            【パスワード】001
+
+            <br><br>
+            <a href="https://suzu-photo.com/wp-content/uploads/2025/04/%E4%B8%83%E4%BA%94%E4%B8%89%E3%83%BB%E7%94%A3%E7%9D%80%E3%83%BB%E8%A8%AA%E5%95%8F%E7%9D%80_%E6%96%99%E9%87%91%E8%A1%A8-scaled.jpg"
+                target="_blank" rel="noopener noreferrer">
+                ＞＞衣装レンタル料金表＜＜
+            </a>
+        </div>
+
+        <div class="labelContent">【お子様】<br>ご希望の衣装番号</div>
+        <input type="text" id="kisisyoubangou" placeholder="ご希望の衣装番号を入力してください">
+
+        <div class="labelContent">ご希望の衣装名</div>
+        <input type="text" id="kisisyoumei" placeholder="ご希望の衣装名を入力してください">
+
+        <div class="labelContent">足のサイズ</div>
+        <div class="footsize-buttons">
+            <button type="button" onclick="selectfootsize(this)">13～14cm</button>
+            <button type="button" onclick="selectfootsize(this)">15～16cm</button>
+            <button type="button" onclick="selectfootsize(this)">17～18cm</button>
+            <button type="button" onclick="selectfootsize(this)">19～20cm</button>
+            <button type="button" onclick="selectfootsize(this)">21～22cm</button>
+        </div>
+
+        <div class="labelContent">あんしんパックの有無</div>
+        <div class="AnshinPack-buttons">
+            <button type="button" onclick="selectAnshinPack(this)">有り</button>
+            <button type="button" onclick="selectAnshinPack(this)">無し</button>
+        </div>
+
+        <div class="labelContent">【大人】<br>ご希望の衣装番号</div>
+        <input type="text" id="Otonaisyoubangou" placeholder="ご希望の衣装番号を入力してください">
+
+        <div class="labelContent">ご希望の衣装名</div>
+        <input type="text" id="Otonaisyoumei" placeholder="ご希望の衣装名を入力してください">
+
+        <div class="labelContent">足のサイズ</div>
+        <input type="text" id="Otonaasinosaizu" placeholder="足のサイズの衣装名を入力してください">
+
+        <div class="labelContent">普段来ている服のサイズ</div>
+        <div class="clothessize-buttons">
+            <button type="button" onclick="selectclothessize(this)">7号</button>
+            <button type="button" onclick="selectclothessize(this)">8号</button>
+            <button type="button" onclick="selectclothessize(this)">9号</button>
+            <button type="button" onclick="selectclothessize(this)">10号</button>
+            <button type="button" onclick="selectclothessize(this)">11号</button>
+            <button type="button" onclick="selectclothessize(this)">12号</button>
+            <button type="button" onclick="selectclothessize(this)">13号</button>
+        </div>
+
+        <div class="labelContent">ご年齢</div>
+        <input type="tel" id="Otonanenrei" placeholder="ご年齢を入力してください">
+
+        <div class="labelContent">帯小物コーディネートのご希望</div>
+        <div class="coordination-buttons">
+            <button type="button" onclick="selectcoordination(this)">かわいい感じ</button>
+            <button type="button" onclick="selectcoordination(this)">華やかな感じ</button>
+            <button type="button" onclick="selectcoordination(this)">かっこいい感じ</button>
+            <button type="button" onclick="selectcoordination(this)">上品な感じ</button>
+            <button type="button" onclick="selectcoordination(this)">お任せ</button>
+        </div>
+
+        <div class="labelContent">あんしんパックの有無</div>
+        <div class="OtonaAnshinPack-buttons">
+            <button type="button" onclick="selectOtonaAnshinPack(this)">有り</button>
+            <button type="button" onclick="selectOtonaAnshinPack(this)">無し</button>
+        </div>
+
+        <div class="info-text">在庫確認後、ご予約が確定しましたらご連絡させて頂きます。
+        </div>
 
         <div class="labelContent">ご質問/ご相談<br>（質問等お気軽にご記入ください）</div>
         <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
 
-        <div class="info-text">※送信ボタンを押すと、料金やカタログ等の詳しいご案内が自動返信されます。</div>
         <button class="submit-button" onclick="submitForm()" div id="section-message">送信</button>
     </div>
 
@@ -941,6 +1053,11 @@
         let selectedSymptom = [];  // 配列として定義
         let selectedFullDate = '';
         let currentDate = new Date();
+        let footsizeCount = '';
+        let coordinationCount = '';
+        let clothessizeCount = '';
+        let AnshinPackCount = '';
+        let OtonaAnshinPackCount = '';
         let FreshflowerphotographyCount = [];
         let availabilityCache = {};
         let irradiationsCount = ''; <!-- 選択された症状を格納する変数 -->
@@ -992,6 +1109,19 @@
             });
         });
 
+        window.addEventListener('DOMContentLoaded', function () {
+            const ua = navigator.userAgent.toLowerCase();
+            const isLine = ua.includes("line");
+            const isMobile = ua.includes("iphone") || ua.includes("android");
+
+            if (isLine && isMobile) {
+                const infoText = document.querySelector('.info-text');
+                if (infoText) {
+                    infoText.style.display = 'none';
+                }
+            }
+        });
+
         function formatDateTime(dateTimeString) {
             const date = new Date(dateTimeString);
 
@@ -1029,23 +1159,98 @@
             updateDisplayInfo(); // 表示を更新
         }
 
-function fetchSelectedFreshflowerphotography() {
-  const checkboxes = document.querySelectorAll('input[name="freshflowerphotography"]:checked');
-  const selected = [];
-  let totalTime = 0;
+        function fetchSelectedFreshflowerphotography() {
+            const checkboxes = document.querySelectorAll('input[name="freshflowerphotography"]:checked');
+            const selected = [];
+            let totalTime = 0;
 
-  checkboxes.forEach(cb => {
-    selected.push(cb.value);
-    totalTime += FreshflowerphotographyTimes[cb.value] || 0;
-  });
+            checkboxes.forEach(cb => {
+                selected.push(cb.value);
+                totalTime += FreshflowerphotographyTimes[cb.value] || 0;
+            });
 
-  FreshflowerphotographyCount = selected; // ← これを追加！！
+            FreshflowerphotographyCount = selected; // ← これを追加！！
 
-  console.log("選択された項目:", selected);
-  console.log("合計時間:", totalTime);
+            console.log("選択された項目:", selected);
+            console.log("合計時間:", totalTime);
 
-  fetchAvailability(currentDate); // カレンダー更新処理
-}
+            fetchAvailability(currentDate); // カレンダー更新処理
+        }
+
+        // 訪問回数の選択（初回・リピート）
+        function selectAnshinPack(element) {
+            document.querySelectorAll('.AnshinPack-buttons button').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            AnshinPackCount = element.innerText;
+
+            // 選択された訪問回数に対応する時間を取得
+            selectedAnshinPackTime = AnshinPackTimes[AnshinPackCount];
+
+            console.log('選択された訪問回数の時間:', selectedAnshinPackTime);
+
+            // カレンダーを更新するために取得する日付を渡す
+            fetchAvailability(currentDate);
+        }
+
+        // 訪問回数の選択（初回・リピート）
+        function selectOtonaAnshinPack(element) {
+            document.querySelectorAll('.OtonaAnshinPack-buttons button').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            OtonaAnshinPackCount = element.innerText;
+
+            // 選択された訪問回数に対応する時間を取得
+            selectedOtonaAnshinPackTime = OtonaAnshinPackTimes[OtonaAnshinPackCount];
+
+            console.log('選択された訪問回数の時間:', selectedOtonaAnshinPackTime);
+
+            // カレンダーを更新するために取得する日付を渡す
+            fetchAvailability(currentDate);
+        }
+
+        // 訪問回数の選択（初回・リピート）
+        function selectfootsize(element) {
+            document.querySelectorAll('.footsize-buttons button').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            footsizeCount = element.innerText;
+
+            // 選択された訪問回数に対応する時間を取得
+            selectedfootsizeTime = footsizeTimes[footsizeCount];
+
+            console.log('選択された訪問回数の時間:', selectedfootsizeTime);
+
+            // カレンダーを更新するために取得する日付を渡す
+            fetchAvailability(currentDate);
+        }
+
+        // 訪問回数の選択（初回・リピート）
+        function selectclothessize(element) {
+            document.querySelectorAll('.clothessize-buttons button').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            clothessizeCount = element.innerText;
+
+            // 選択された訪問回数に対応する時間を取得
+            selectedclothessizeTime = clothessizeTimes[clothessizeCount];
+
+            console.log('選択された訪問回数の時間:', selectedclothessizeTime);
+
+            // カレンダーを更新するために取得する日付を渡す
+            fetchAvailability(currentDate);
+        }
+
+        // 訪問回数の選択（初回・リピート）
+        function selectcoordination(element) {
+            document.querySelectorAll('.coordination-buttons button').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            coordinationCount = element.innerText;
+
+            // 選択された訪問回数に対応する時間を取得
+            selectedcoordinationTime = coordinationTimes[coordinationCount];
+
+            console.log('選択された訪問回数の時間:', selectedcoordinationTime);
+
+            // カレンダーを更新するために取得する日付を渡す
+            fetchAvailability(currentDate);
+        }
 
         function selectDate(cell) {
             // "unavailable" クラスが付いている場合はクリックを無効化
@@ -1072,23 +1277,30 @@ function fetchSelectedFreshflowerphotography() {
             updateDisplayInfo();
         }
 
-function submitForm() {
-  // ✅ ここで最新のチェックボックス状態を取得
-  const selectedClothes = Array.from(document.querySelectorAll('input[name="freshflowerphotography"]:checked'))
-                               .map(cb => cb.value);
+        function submitForm() {
+            // ✅ ここで最新のチェックボックス状態を取得
+            const selectedClothes = Array.from(document.querySelectorAll('input[name="freshflowerphotography"]:checked'))
+                .map(cb => cb.value);
 
-  const formData = {
-    name: document.getElementById('name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    Yourresidentialaddress: document.getElementById('Yourresidentialaddress').value.trim(),
-    FreshflowerphotographyCount: selectedClothes, // ✅ ここに代入
-    dates: [
-      document.getElementById('date1').value,
-      document.getElementById('date2').value,
-      document.getElementById('date3').value
-    ],
-    message: document.getElementById('message').value.trim()
-  };
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                Otonaasinosaizu: document.getElementById('Otonaasinosaizu').value.trim(),
+                Otonanenrei: document.getElementById('Otonanenrei').value.trim(),
+                kisisyoubangou: document.getElementById('kisisyoubangou').value.trim(),
+                kisisyoumei: document.getElementById('kisisyoumei').value.trim(),
+                Otonaisyoubangou: document.getElementById('Otonaisyoubangou').value.trim(),
+                Otonaisyoumei: document.getElementById('Otonaisyoumei').value.trim(),
+                Yourresidentialaddress: document.getElementById('Yourresidentialaddress').value.trim(),
+                FreshflowerphotographyCount: selectedClothes, // ✅ ここに代入
+                footsizeCount, AnshinPackCount, OtonaAnshinPackCount, clothessizeCount, coordinationCount,
+                dates: [
+                    document.getElementById('date1').value,
+                    document.getElementById('date2').value,
+                    document.getElementById('date3').value
+                ],
+                message: document.getElementById('message').value.trim()
+            };
 
             // フォームデータのチェック
             if (!formData.name) {
@@ -1113,16 +1325,16 @@ function submitForm() {
 
             // LINEトークにメッセージを送信
 
-  liff.sendMessages([{
-    type: 'text',
-    text: `【予約フォーム】\n≪衣装レンタル≫\n｟お名前｠\n・${formData.name}\n\n｟ご住所｠\n・${formData.Yourresidentialaddress}\n\n｟電話番号｠\n・${formData.phone}\n\n｟メニュー｠\n・衣装レンタル\n\n｟ご希望のお衣装｠\n・${formData.FreshflowerphotographyCount.length > 0 ? '・' + formData.FreshflowerphotographyCount.join('\n・') : '・未選択'}\n\n【希望日時】\n｟第一希望日｠\n${formatDate(formData.dates[0])}\n\n｟第二希望日｠\n${formatDate(formData.dates[1])}\n\n｟第三希望日｠\n${formatDate(formData.dates[2])}\n\n｟メッセージ｠\n・${formData.message}`
-  }]).then(() => {
-    alert('当日キャンセルは無いようにお願いいたします。');
-    liff.closeWindow();
-  }).catch((err) => {
-    console.error('メッセージの送信に失敗しました', err);
-  });
-}
+            liff.sendMessages([{
+                type: 'text',
+                text: `【予約フォーム】\n≪衣装レンタル≫\n｟お名前｠\n・${formData.name}\n\n｟ご住所｠\n・${formData.Yourresidentialaddress}\n\n｟電話番号｠\n・${formData.phone}\n\n【希望日時】\n｟第一希望日｠\n${formatDate(formData.dates[0])}\n\n｟第二希望日｠\n${formatDate(formData.dates[1])}\n\n｟第三希望日｠\n${formatDate(formData.dates[2])}\n\n｟メニュー｠\n・衣装レンタル\n\n｟ご希望のお衣装｠\n${formData.FreshflowerphotographyCount.length > 0 ? '・' + formData.FreshflowerphotographyCount.join('\n・') : '・未選択'}\n\n【お子様】\n｟衣装番号｠\n・${formData.kisisyoubangou}\n\n｟衣装名｠\n・${formData.kisisyoumei}\n\n｟足のサイズ｠\n・${formData.footsizeCount}\n\n｟あんしんパック｠\n・${formData.AnshinPackCount}\n\n【大人】\n｟衣装番号｠\n・${formData.Otonaisyoubangou}\n\n｟衣装名｠\n・${formData.Otonaisyoumei}\n\n｟足のサイズ｠\n・${formData.Otonaasinosaizu}\n\n｟服のサイズ｠\n・${formData.clothessizeCount}\n\n｟ご年齢｠\n・${formData.Otonanenrei}\n\n｟帯小物コーディネート｠\n・${formData.coordinationCount}\n\n｟あんしんパック｠\n・${formData.OtonaAnshinPackCount}\n\n｟メッセージ｠\n・${formData.message}`
+            }]).then(() => {
+                alert('お問合せありがとうございます。追って担当者から返信をさせて頂きます。');
+                liff.closeWindow();
+            }).catch((err) => {
+                console.error('メッセージの送信に失敗しました', err);
+            });
+        }
 
         function formatDate(datetime) {
             /* 日時文字列が空の場合は空文字を返す */
