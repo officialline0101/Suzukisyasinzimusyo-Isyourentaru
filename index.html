@@ -885,7 +885,7 @@
     <div class="container">
         <h1>
             <span style="font-size: 18px;">すずき写真事務所</span><br>
-            衣装レンタル<br>(撮影なし)
+            和装レンタル<br><span style="font-size: 15px;">(撮影なし)</span>
             <div class="info-text">
                 こちらのフォームは携帯専用です。<br>パソコンからは送信できません
             </div>
@@ -901,33 +901,33 @@
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
         <div class="highlight-background">
-            <div class="kibounitizi">撮影希望日<span class="required">必須</span></div>
+            <div class="kibounitizi">使用予定日<span class="required">必須</span></div>
         </div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder1">⇩タップして日時を入力⇩</span>
-            <input type="datetime-local" id="date1" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
+            <input type="date" id="date1" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
         <div class="highlight-background">
-            <span class="kibounitizi">第2希望日（任意）</span>
+            <span class="kibounitizi">第二希望日（任意）</span>
         </div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder2">⇩タップして日時を入力⇩</span>
-            <input type="datetime-local" id="date2" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
+            <input type="date" id="date2" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
         <div class="highlight-background">
-            <span class="kibounitizi">第3希望日（任意）</span>
+            <span class="kibounitizi">第三希望日（任意）</span>
         </div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
             <span class="placeholder" id="placeholder3">⇩タップして日時を入力⇩</span>
-            <input type="datetime-local" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
+            <input type="date" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
         <div class="labelContent">ご希望のお衣装<span class="required">必須</span></div>
@@ -962,11 +962,11 @@
             </label>
         </div>
 
-        <div class="labelContent">カタログ</div>
+        <div class="labelContent">和装カタログ</div>
 
         <div class="info-text">
             <a href="https://kimono-c.jp/" target="_blank" rel="noopener noreferrer">
-                ＞＞カタログ＜＜
+                ＞＞和装カタログ＜＜
 
             </a>
 
@@ -995,7 +995,7 @@
             <button type="button" onclick="selectfootsize(this)">21～22cm</button>
         </div>
 
-        <div class="labelContent">あんしんパックの有無</div>
+        <div class="labelContent">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
         <div class="AnshinPack-buttons">
             <button type="button" onclick="selectAnshinPack(this)">有り</button>
             <button type="button" onclick="selectAnshinPack(this)">無し</button>
@@ -1033,7 +1033,7 @@
             <button type="button" onclick="selectcoordination(this)">お任せ</button>
         </div>
 
-        <div class="labelContent">あんしんパックの有無</div>
+        <div class="labelContent">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
         <div class="OtonaAnshinPack-buttons">
             <button type="button" onclick="selectOtonaAnshinPack(this)">有り</button>
             <button type="button" onclick="selectOtonaAnshinPack(this)">無し</button>
