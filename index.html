@@ -120,6 +120,8 @@
 
         .label {
             display: block;
+            margin-top: 10px;
+            /* ← ここを変更 */
             margin-bottom: 10px;
             padding: 3px;
             font-weight: 600;
@@ -128,9 +130,41 @@
             border-radius: 6px;
             font-size: 18px;
             text-align: center;
-            /* 中央揃え */
             text-indent: 40px;
-            /* テキストを右に20pxずらす */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .labelhidarizurasi {
+            display: block;
+            margin-top: 10px;
+            /* ← ここを変更 */
+            margin-bottom: 10px;
+            padding: 3px;
+            font-weight: 600;
+            background-color: #a8b9a7;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: center;
+            text-indent: 0px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .labelkakikukeko {
+            display: block;
+            margin-top: 10px;
+            /* ← ここを変更 */
+            margin-bottom: 10px;
+            padding: 3px;
+            font-weight: 600;
+            background-color: #a8b9a7;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: center;
+            text-indent: 40px;
             position: relative;
             overflow: hidden;
         }
@@ -196,7 +230,7 @@
         textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 3px;
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
@@ -644,6 +678,8 @@
             width: 100%;
             padding: 15px;
             font-size: 18px;
+            font-weight: bold;
+            /* ← これを追加 */
             background-color: #a8b9a7;
         }
 
@@ -890,19 +926,17 @@
                 こちらのフォームは携帯専用です。<br>パソコンからは送信できません
             </div>
         </h1>
-        <div class="label">お客様名<span class="required">必須</span></div>
+        <div class="labelkakikukeko">お客様名<span class="required">必須</span></div>
         <input type="text" id="name" placeholder="お名前を入力してください" oninput="saveInput('name')">
 
-        <div class="label">ご住所<span class="required">必須</span></div>
+        <div class="labelkakikukeko">ご住所<span class="required">必須</span></div>
         <input type="text" id="Yourresidentialaddress" placeholder="ご住所を入力してください"
             oninput="saveInput('Yourresidentialaddress')">
 
-        <div class="label">電話番号<span class="required">必須</span></div>
+        <div class="labelkakikukeko">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
-        <div class="highlight-background">
-            <div class="kibounitizi">使用予定日<span class="required">必須</span></div>
-        </div>
+        <div class="labelkakikukeko">使用予定日<span class="required">必須</span></div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
@@ -910,9 +944,7 @@
             <input type="date" id="date1" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="highlight-background">
-            <span class="kibounitizi">第二希望日（任意）</span>
-        </div>
+        <div class="labelhidarizurasi">第2希望日</div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
@@ -920,9 +952,7 @@
             <input type="date" id="date2" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="highlight-background">
-            <span class="kibounitizi">第三希望日（任意）</span>
-        </div>
+        <div class="labelhidarizurasi">第3希望日</div>
 
         <!-- カスタム placeholder 表示用 -->
         <div class="datetime-wrapper" style="text-align: center;">
@@ -930,7 +960,7 @@
             <input type="date" id="date3" class="datetime-input" placeholder=" " aria-label="タップして日時を入力">
         </div>
 
-        <div class="labelContent">ご希望のお衣装<span class="required">必須</span></div>
+        <div class="labelkakikukeko">ご希望のお衣装<span class="required">必須</span></div>
         <div class="checkbox-group">
             <label class="checkbox-card">
                 <input type="checkbox" name="freshflowerphotography" value="七五三3歳">
@@ -962,7 +992,7 @@
             </label>
         </div>
 
-        <div class="labelContent">和装カタログ</div>
+        <div class="labelhidarizurasi">和装カタログ</div>
 
         <div class="info-text">
             <a href="https://kimono-c.jp/" target="_blank" rel="noopener noreferrer">
@@ -980,13 +1010,13 @@
             </a>
         </div>
 
-        <div class="labelContent">【お子様】<br>ご希望の衣装番号</div>
+        <div class="labelhidarizurasi">【お子様】<br>ご希望の衣装番号</div>
         <input type="text" id="kisisyoubangou" placeholder="ご希望の衣装番号を入力してください">
 
-        <div class="labelContent">ご希望の衣装名</div>
+        <div class="labelhidarizurasi">ご希望の衣装名</div>
         <input type="text" id="kisisyoumei" placeholder="ご希望の衣装名を入力してください">
 
-        <div class="labelContent">足のサイズ</div>
+        <div class="labelhidarizurasi">足のサイズ</div>
         <div class="footsize-buttons">
             <button type="button" onclick="selectfootsize(this)">13～14cm</button>
             <button type="button" onclick="selectfootsize(this)">15～16cm</button>
@@ -995,22 +1025,22 @@
             <button type="button" onclick="selectfootsize(this)">21～22cm</button>
         </div>
 
-        <div class="labelContent">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
+        <div class="labelhidarizurasi">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
         <div class="AnshinPack-buttons">
             <button type="button" onclick="selectAnshinPack(this)">有り</button>
             <button type="button" onclick="selectAnshinPack(this)">無し</button>
         </div>
 
-        <div class="labelContent">【大人】<br>ご希望の衣装番号</div>
+        <div class="labelhidarizurasi">【大人】<br>ご希望の衣装番号</div>
         <input type="text" id="Otonaisyoubangou" placeholder="ご希望の衣装番号を入力してください">
 
-        <div class="labelContent">ご希望の衣装名</div>
+        <div class="labelhidarizurasi">ご希望の衣装名</div>
         <input type="text" id="Otonaisyoumei" placeholder="ご希望の衣装名を入力してください">
 
-        <div class="labelContent">足のサイズ</div>
+        <div class="labelhidarizurasi">足のサイズ</div>
         <input type="text" id="Otonaasinosaizu" placeholder="足のサイズの衣装名を入力してください">
 
-        <div class="labelContent">普段来ている服のサイズ</div>
+        <div class="labelhidarizurasi">普段来ている服のサイズ</div>
         <div class="clothessize-buttons">
             <button type="button" onclick="selectclothessize(this)">7号</button>
             <button type="button" onclick="selectclothessize(this)">8号</button>
@@ -1021,10 +1051,10 @@
             <button type="button" onclick="selectclothessize(this)">13号</button>
         </div>
 
-        <div class="labelContent">ご年齢</div>
+        <div class="labelhidarizurasi">ご年齢</div>
         <input type="tel" id="Otonanenrei" placeholder="ご年齢を入力してください">
 
-        <div class="labelContent">帯小物コーディネートのご希望</div>
+        <div class="labelhidarizurasi">帯小物コーディネートのご希望</div>
         <div class="coordination-buttons">
             <button type="button" onclick="selectcoordination(this)">かわいい感じ</button>
             <button type="button" onclick="selectcoordination(this)">華やかな感じ</button>
@@ -1033,7 +1063,7 @@
             <button type="button" onclick="selectcoordination(this)">お任せ</button>
         </div>
 
-        <div class="labelContent">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
+        <div class="labelhidarizurasi">あんしんパックの有無<br><span style="font-size: 14px;">(お参り同行、和装レンタルのみの方は必須)</span></div>
         <div class="OtonaAnshinPack-buttons">
             <button type="button" onclick="selectOtonaAnshinPack(this)">有り</button>
             <button type="button" onclick="selectOtonaAnshinPack(this)">無し</button>
@@ -1042,7 +1072,7 @@
         <div class="info-text">在庫確認後、ご予約が確定しましたらご連絡させて頂きます。
         </div>
 
-        <div class="labelContent">ご質問/ご相談<br>（質問等お気軽にご記入ください）</div>
+        <div class="labelhidarizurasi">ご質問/ご相談</div>
         <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
 
         <button class="submit-button" onclick="submitForm()" div id="section-message">送信</button>
